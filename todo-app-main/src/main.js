@@ -17,7 +17,7 @@ sun_moon.addEventListener('click', ()=>{
     sun_moon.classList.toggle('light')
 })
 
-function handleInput(value,evn){
+window.handleInput = function (value,evn){
     if(evn.key=="Enter" && value.trim().length !== 0){
         createTodo({
             id: Math.floor(Math.random() * 10000) + 1,
@@ -27,6 +27,7 @@ function handleInput(value,evn){
         evn.target.value = ""
     }
 }
+
 function createTodo(todo){
     saveToLocalStorage(todo)
     drawTodo(todo)
@@ -61,7 +62,7 @@ function drawTodo(todo){
     task.append(todo_text)
 
     const img = document.createElement('img')
-    img.src= "/icon-cross.4105108f.svg"
+    img.src = new URL('../images/icon-cross.svg', import.meta.url);
     task.append(img)
     img.addEventListener('click', deleteTodo)
     items_left()
@@ -142,16 +143,15 @@ function makeActive(event){
     event.target.classList.add("active")
 }
 
-function showAll(event){
+window.showAll = function (event){
     const todos = document.querySelectorAll('.task')
-    console.log(todos)
     todos.forEach(item => {
         item.classList.remove('display_none')
     })
     makeActive(event)
 }
 
-function showActive(event){
+window.showActive = function (event){
     const todos = document.querySelectorAll('.task')
     todos.forEach(item => {
         if(item.dataset.completed === "true"){
@@ -164,7 +164,7 @@ function showActive(event){
     makeActive(event);   
 }
 
-function showCompleted(event){
+window.showCompleted = function (event){
     const todos = document.querySelectorAll('.task')
     todos.forEach(item => {
         if(item.dataset.completed === "false"){
@@ -177,7 +177,7 @@ function showCompleted(event){
     makeActive(event)
 }
 
-function clearCompleted(){
+window.clearCompleted = function (){
     const todos_el = document.querySelectorAll(".task")
     todos_el.forEach(item => {
         if(item.dataset.completed == "true"){
@@ -190,6 +190,7 @@ function clearCompleted(){
 
     items_left()
 }
+
 function items_left(){
     const span = document.querySelector(".info span")
     span.innerText = `${JSON.parse(localStorage.todo).length} items left`
