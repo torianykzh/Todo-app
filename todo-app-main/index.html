@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+  <title>Frontend Mentor | Todo app</title>
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">TODO</h1>
+      <div class="sun_moon"></div>
+    </header>
+    <div class="new_todo">
+      <div class="complet_toggle"></div>
+      <input type="text" onkeydown="handleInput(this.value, event)" placeholder="Create a new todo..."></div>
+    <div class="task_box">
+      <div class="info">
+        <span>items left</span>
+        <span onclick="clearCompleted()">clear completed</span>
+      </div>
+    </div>
+    <div class="menu">
+      <span class="active" onclick="showAll(event)">All</span>
+      <span onclick="showActive(event)">Active</span>
+      <span onclick="showCompleted(event)">Completed</span>
+    </div>
+  </div>
+  <script src="./src/main.js"></script>
+</body>
+</html>
